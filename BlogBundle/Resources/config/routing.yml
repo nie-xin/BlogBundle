@@ -1,3 +1,7 @@
-blog_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: BlogBundle:Default:index }
+HelloTheWorld:
+    path:       /hello-world
+    defaults:   { _controller: BlogBundle:Blog:index }
+
+ByebyeWorld:
+    path:       /byebye-world
+    defaults:   { _controller: BlogBundle:Blog:quit }
