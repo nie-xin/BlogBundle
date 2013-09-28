@@ -1,7 +1,24 @@
-HelloTheWorld:
-    path:       /hello-world
-    defaults:   { _controller: BlogBundle:Blog:index }
-
-ByebyeWorld:
-    path:       /byebye-world
-    defaults:   { _controller: BlogBundle:Blog:quit }
+#HelloTheWorld:
+#    path:       /hello-world
+#    defaults:   { _controller: BlogBundle:Blog:index }
+#
+#ByebyeWorld:
+#    path:       /byebye-world
+#    defaults:   { _controller: BlogBundle:Blog:quit }
+    
+blog_welcome:
+    path:       /blog
+    defaults:  { _controller: BlogBundle:Blog:index }
+    
+blog_read:
+    path:       /blog/article/{id}
+    defaults:  { _controller: BlogBundle:Blog:read }
+    
+blog_read_slug:
+    path:       /blog/{year}/{slug}.{format}
+    defaults:   { _controller: BlogBundle:Blog:readSlug }
+    
+blog_add:
+    path:       /blog/add
+    defaults:  { _controller: BlogBundle:Blog:add }
+    
