@@ -8,11 +8,15 @@ use Symfony\Component\HttpFoundation\Response;
 class BlogController extends Controller 
 {
     public function indexAction() {
-        return $this->render('BlogBundle:Blog:index.html.twig', array('name' => 'NIE Xin'));
+//        return $this->render('BlogBundle:Blog:index.html.twig', array('name' => 'NIE Xin'));
+        $id = 5;
+        $url = $this->generateUrl('blog_read', array('id' => $id));
+        
+        return $this->redirect($url);
     }
     
     public function quitAction() {
-        return $this->render('BlogBundle:Blog:quit.html.twig', array('name' => 'NIE Xin'));
+        return $this->render('BlogBundle:Blog:quit.html.twig', array('name' => 'NIE Xin'), true);
     }
     
     public function readAction($id) {

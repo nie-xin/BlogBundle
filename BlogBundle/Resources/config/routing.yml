@@ -5,20 +5,38 @@
 #ByebyeWorld:
 #    path:       /byebye-world
 #    defaults:   { _controller: BlogBundle:Blog:quit }
+
     
 blog_welcome:
-    path:       /blog
-    defaults:  { _controller: BlogBundle:Blog:index }
+    path:      /{page}
+    defaults:  { _controller: BlogBundle:Blog:index, page: 1 }
+    requirements:
+        page: \d*
     
 blog_read:
-    path:       /blog/article/{id}
+    path:      /article/{id}
     defaults:  { _controller: BlogBundle:Blog:read }
     
 blog_read_slug:
-    path:       /blog/{year}/{slug}.{format}
-    defaults:   { _controller: BlogBundle:Blog:readSlug }
+    path:       /{year}/{slug}.{format}
+    defaults:   { _controller: BlogBundle:Blog:readSlug, format: html }
+    requirements:
+        year:   \d{4}
+        format: html|xml
     
 blog_add:
-    path:       /blog/add
+    path:      /add
     defaults:  { _controller: BlogBundle:Blog:add }
+    
+blog_modify:
+    path:       /modify/{id}
+    defaults:   { _controller: BlogBundle:Blog:modify }
+    requirements:
+          id:   \d+
+          
+blog_delete:
+    path:       /delete/{id}
+    defaults:   { _controller: BlogBundle:Blog:delete }
+    requirements:
+          id:   \d+
     
