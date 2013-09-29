@@ -20,7 +20,29 @@ class BlogController extends Controller
     }
     
     public function readAction($id) {
-        return new Response("Article id :" . $id . " to display.");
+//        $response = new Response;
+//        
+//        $response->setContent('404 页面未找到');
+//        
+//        $response->setStatusCode(404);
+//        
+//        return $response;
+        
+//        $request = $this->getRequest();
+//        
+//        $tag = $request->query->get('tag');
+//        
+//        return new Response("Article id :" . $id . " to display, with tag " . $tag);
+        
+//        return $this->render('BlogBundle:Blog:read.html.twig', array('id' => $id));
+        
+//        return $this->redirect( $this->generateUrl('blog_welcome', array('page' => 2)) );
+        
+        $response = new Response(json_encode(array('id' => $id)));
+        
+        $response->headers->set('Content-Type', 'application/json');
+        
+        return $response;
     }
     
     public function readSlugAction($year, $slug, $format) {

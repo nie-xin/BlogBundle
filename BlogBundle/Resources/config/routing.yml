@@ -16,6 +16,8 @@ blog_welcome:
 blog_read:
     path:      /article/{id}
     defaults:  { _controller: BlogBundle:Blog:read }
+    requirements:
+        id:    \d+
     
 blog_read_slug:
     path:       /{year}/{slug}.{format}
