@@ -3,9 +3,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Read the article {{ id}}</title>
+        <title>Read an article</title>
     </head>
     <body>
-        <h1>Hello article n°{{ id }} !</h1>
+        <h1>Hello, we're going to read an article...</h1>
+        
+        <p>
+        {% for message in app.session.flashbag.get('info') %}
+                <p>{{ message }}</p>
+        {% endfor %}
+        </p>
+        
+        <p>
+        Here we can read the article id: {{ id }} <br>
+        But We didn't do that for the moment.
+        </p>
     </body>
 </html>
