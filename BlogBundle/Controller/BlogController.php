@@ -7,12 +7,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller 
 {
-    public function indexAction() {
+    public function indexAction($page) {
 //        return $this->render('BlogBundle:Blog:index.html.twig', array('name' => 'NIE Xin'));
-        $id = 5;
-        $url = $this->generateUrl('blog_read', array('id' => $id));
+//        $id = 5;
+//        $url = $this->generateUrl('blog_read', array('id' => $id));
+//        
+//        return $this->redirect($url);
+        if ( $page < 1 ) {
+            throw $this->createNotFoundException('Page inexist (page = ' . $page . ')');
+        }
         
-        return $this->redirect($url);
+        return $this->render('BlogBundle:Blog:index.html.twig');
     }
     
     public function quitAction() {
@@ -77,9 +82,39 @@ class BlogController extends Controller
     }
     
     public function addAction() {
-        $this->get('session')->getFlashBag()->add('info', 'Article has been added');
-        $this->get('session')->getFlashBag()->add('info', 'Yes, it has been saved');
+//        $this->get('session')->getFlashBag()->add('info', 'Article has been added');
+//        $this->get('session')->getFlashBag()->add('info', 'Yes, it has been saved');
+//        
+//        return $this->redirect($this->generateUrl('blog_read', array('id' => 5)));
         
-        return $this->redirect($this->generateUrl('blog_read', array('id' => 5)));
+        if ($this->get('request')->getMethod() == 'POST') {
+            $this->get('session')->getFlashBag()->add('notice', 'Article added');
+            
+            return $this->redirect( $this->generateUrl('blog_read', array('id' => 5)) );
+        }
+        
+        return $this->render('BlogBundle:Blog:add.html.twig');
     }
+    
+    public function modifyAction($id) {
+        // ToDO
+        return $this->render('BlogBundle:Blog:modify.html.twig');
+    }
+    
+    public function deleteAction($id) {
+        // ToDo
+        return $this->render('BlogBundle:Blog:delete.html.twig');
+    }
+    
+    public function menuAction() {
+        $list = array(
+            array('id' => 2, 'title' => 'My last weekend'),
+            array('id' => 5, 'title' => 'Start with symfony 2'),
+            array('id' => 9, 'title' => 'Just a test')
+        );
+        
+        return $this->render('BlogBundle:Blog:menu.html.twig', array('list_articles' => $list));
+    }
+    
+    
 }

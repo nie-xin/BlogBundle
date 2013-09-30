@@ -1,0 +1,9 @@
+{# menu Twig template #}
+
+<ul>
+    <ul class="nav nav-pills nav-stacked">
+        {% for article in list_articles %}
+            <li><a href="{{ path('blog_read', {'id': article.id}) }}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+</ul>
