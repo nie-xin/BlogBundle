@@ -1,18 +1,19 @@
-{# global layout template #}
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Blog{% endblock %}</title>
-    </head>
-    <body>
-        
-        <div id="menu">
-            {{ render(controller("BlogBundle:Blog:menu")) }}
-        </div>
-        
-        {% block body %}
-        {% endblock %}
-        
-    </body>
-</html>
+{# src/NX/BLogBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+Blog - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Blog</h1>
+    
+    <hr>
+    
+    {% block blog_body %}
+    {% endblock %}
+
+{% endblock %}
+    

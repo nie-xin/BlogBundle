@@ -2,9 +2,25 @@
 
 {% extends "BlogBundle::layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Index{% endblock %}
+{% block title %}
+    Welcome - {{ parent() }}
+{% endblock %}
 
-{% block body %}
-    测试一下twig的继承。index继承layout模板。
+{% block blog_body %}
+    
+    <h2>Article list</h2>
+    
+    <ul>
+        {% for article in articles %}
+            <li>
+                <a href="{{ path('blog_read', {'id': article.id}) }}">{{ article.title }}</a>
+                par {{ article.auteur }},
+                le {{ article.date|date('d/m/Y') }}
+            </li>
+        {% else %}
+            <li>Pas (encore !) d'articles</li>
+        {% endfor %}
+    </ul>
+    
 {% endblock %}
 

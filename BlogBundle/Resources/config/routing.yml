@@ -7,7 +7,7 @@
 #    defaults:   { _controller: BlogBundle:Blog:quit }
 
     
-blog_welcome:
+blog_index:
     path:      /{page}
     defaults:  { _controller: BlogBundle:Blog:index, page: 1 }
     requirements:

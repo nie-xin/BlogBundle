@@ -1,27 +1,25 @@
-{# add Twig template #}
+{# modify Twig template #}
 
 {% extends "BlogBundle::layout.html.twig" %}
 
 {% block title %}
-Add an article - {{ parent() }}
+Modify an article - {{ parent() }}
 {% endblock %}
 
 {% block blog_body %}
-<h2>Add an article</h2>
+<h2>Modify an article</h2>
 
 {% include "BlogBundle:Blog:forme.html.twig" %}
 
 <p>
-    You can add new article now...
+    You can edit your article now...
 </p>
 
 <p>
-    <a href="{{ path('blog_read', ('id': article.id}) }}" class="btn">
+    <a href="{{ path('blog_read', {'id': article.id}) }}" class="btn">
         <i class="icon-chevron-left"></i>
         Return to article
     </a>
 </p>
 
 {% endblock %}
-
-

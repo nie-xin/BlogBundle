@@ -7,17 +7,39 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BlogController extends Controller 
 {
-    public function indexAction($page) {
+    public function indexAction() {
 //        return $this->render('BlogBundle:Blog:index.html.twig', array('name' => 'NIE Xin'));
 //        $id = 5;
 //        $url = $this->generateUrl('blog_read', array('id' => $id));
 //        
 //        return $this->redirect($url);
-        if ( $page < 1 ) {
-            throw $this->createNotFoundException('Page inexist (page = ' . $page . ')');
-        }
+//        if ( $page < 1 ) {
+//            throw $this->createNotFoundException('Page inexist (page = ' . $page . ')');
+//        }
         
-        return $this->render('BlogBundle:Blog:index.html.twig');
+          // Les articles :
+        $articles = array(
+          array(
+            'title'   => 'Mon weekend a Phi Phi Island !',
+            'id'      => 1,
+            'auteur'  => 'winzou',
+            'contenu' => 'Ce weekend était trop bien. Blabla…',
+            'date'    => new \Datetime()),
+          array(
+            'title'   => 'Repetition du National Day de Singapour',
+            'id'      => 2,
+            'auteur' => 'winzou',
+            'contenu' => 'Bientôt prêt pour le jour J. Blabla…',
+            'date'    => new \Datetime()),
+          array(
+            'title'   => 'Chiffre d\'affaire en hausse',
+            'id'      => 3, 
+            'auteur' => 'M@teo21',
+            'contenu' => '+500% sur 1 an, fabuleux. Blabla…',
+            'date'    => new \Datetime())
+        );
+        
+        return $this->render('BlogBundle:Blog:index.html.twig', array('articles' => $articles ));
     }
     
     public function quitAction() {
@@ -39,7 +61,7 @@ class BlogController extends Controller
 //        
 //        return new Response("Article id :" . $id . " to display, with tag " . $tag);
         
-        return $this->render('BlogBundle:Blog:read.html.twig', array('id' => $id));
+ //       return $this->render('BlogBundle:Blog:read.html.twig', array('id' => $id));
         
 //        return $this->redirect( $this->generateUrl('blog_welcome', array('page' => 2)) );
         
@@ -75,6 +97,19 @@ class BlogController extends Controller
 //        $session->set('user_id', 91);
 //        
 //        return new Response('What are you looking at?');
+        
+        $article = array(
+            'id'      => 1,
+            'title'   => 'Mon weekend a Phi Phi Island !',
+            'auteur'  => 'winzou',
+            'contenu' => 'Ce weekend était trop bien. Blabla…',
+            'date'    => new \Datetime()
+         );
+     
+        // Puis modifiez la ligne du render comme ceci, pour prendre en compte l'article :
+        return $this->render('BlogBundle:Blog:read.html.twig', array(
+          'article' => $article
+        ));       
     }
     
     public function readSlugAction($year, $slug, $format) {
@@ -97,8 +132,15 @@ class BlogController extends Controller
     }
     
     public function modifyAction($id) {
-        // ToDO
-        return $this->render('BlogBundle:Blog:modify.html.twig');
+        $article = array(
+          'id'      => 1,
+          'title'   => 'Mon weekend a Phi Phi Island !',
+          'auteur'  => 'winzou',
+          'contenu' => 'Ce weekend était trop bien. Blabla…',
+          'date'    => new \Datetime()
+        );
+        
+        return $this->render('BlogBundle:Blog:modify.html.twig', array('article' => $article));
     }
     
     public function deleteAction($id) {
