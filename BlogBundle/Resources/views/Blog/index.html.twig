@@ -1,9 +1,10 @@
 {# Blog bundle index template #}
-
+{# 继承blog bundle布局 #}
 {% extends "BlogBundle::layout.html.twig" %}
 
 {% block title %}
-    Welcome - {{ parent() }}
+    {# rendering the parent's title block after "Welcome" #}
+    Welcome - {{ parent() }} 
 {% endblock %}
 
 {% block blog_body %}
@@ -14,11 +15,11 @@
         {% for article in articles %}
             <li>
                 <a href="{{ path('blog_read', {'id': article.id}) }}">{{ article.title }}</a>
-                par {{ article.auteur }},
-                le {{ article.date|date('d/m/Y') }}
+                by {{ article.author }},
+                date of {{ article.date|date('d/m/Y') }}
             </li>
         {% else %}
-            <li>Pas (encore !) d'articles</li>
+            <li>No article found</li>
         {% endfor %}
     </ul>
     

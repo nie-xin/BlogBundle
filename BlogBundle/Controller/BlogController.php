@@ -22,20 +22,20 @@ class BlogController extends Controller
           array(
             'title'   => 'Mon weekend a Phi Phi Island !',
             'id'      => 1,
-            'auteur'  => 'winzou',
-            'contenu' => 'Ce weekend était trop bien. Blabla…',
+            'author'  => 'winzou',
+            'content' => 'Ce weekend était trop bien. Blabla…',
             'date'    => new \Datetime()),
           array(
             'title'   => 'Repetition du National Day de Singapour',
             'id'      => 2,
-            'auteur' => 'winzou',
-            'contenu' => 'Bientôt prêt pour le jour J. Blabla…',
+            'author' => 'winzou',
+            'content' => 'Bientôt prêt pour le jour J. Blabla…',
             'date'    => new \Datetime()),
           array(
             'title'   => 'Chiffre d\'affaire en hausse',
             'id'      => 3, 
-            'auteur' => 'M@teo21',
-            'contenu' => '+500% sur 1 an, fabuleux. Blabla…',
+            'author' => 'M@teo21',
+            'content' => '+500% sur 1 an, fabuleux. Blabla…',
             'date'    => new \Datetime())
         );
         
@@ -101,8 +101,8 @@ class BlogController extends Controller
         $article = array(
             'id'      => 1,
             'title'   => 'Mon weekend a Phi Phi Island !',
-            'auteur'  => 'winzou',
-            'contenu' => 'Ce weekend était trop bien. Blabla…',
+            'author'  => 'winzou',
+            'content' => 'Ce weekend était trop bien. Blabla…',
             'date'    => new \Datetime()
          );
      
@@ -135,8 +135,8 @@ class BlogController extends Controller
         $article = array(
           'id'      => 1,
           'title'   => 'Mon weekend a Phi Phi Island !',
-          'auteur'  => 'winzou',
-          'contenu' => 'Ce weekend était trop bien. Blabla…',
+          'author'  => 'winzou',
+          'content' => 'Ce weekend était trop bien. Blabla…',
           'date'    => new \Datetime()
         );
         

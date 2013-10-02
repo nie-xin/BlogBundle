@@ -12,13 +12,13 @@ Add an article - {{ parent() }}
 {% include "BlogBundle:Blog:forme.html.twig" %}
 
 <p>
-    You can add new article now...
+    You can add new post now...
 </p>
 
 <p>
-    <a href="{{ path('blog_read', ('id': article.id}) }}" class="btn">
+    <a href="{{ path('blog_read', {'id': article.id}) }}" class="btn">
         <i class="icon-chevron-left"></i>
-        Return to article
+        Return to post
     </a>
 </p>
 
