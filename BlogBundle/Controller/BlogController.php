@@ -8,38 +8,40 @@ use Symfony\Component\HttpFoundation\Response;
 class BlogController extends Controller 
 {
     public function indexAction() {
-//        return $this->render('BlogBundle:Blog:index.html.twig', array('name' => 'NIE Xin'));
-//        $id = 5;
-//        $url = $this->generateUrl('blog_read', array('id' => $id));
-//        
-//        return $this->redirect($url);
-//        if ( $page < 1 ) {
-//            throw $this->createNotFoundException('Page inexist (page = ' . $page . ')');
-//        }
-        
           // Les articles :
-        $articles = array(
-          array(
-            'title'   => 'Mon weekend a Phi Phi Island !',
-            'id'      => 1,
-            'author'  => 'winzou',
-            'content' => 'Ce weekend était trop bien. Blabla…',
-            'date'    => new \Datetime()),
-          array(
-            'title'   => 'Repetition du National Day de Singapour',
-            'id'      => 2,
-            'author' => 'winzou',
-            'content' => 'Bientôt prêt pour le jour J. Blabla…',
-            'date'    => new \Datetime()),
-          array(
-            'title'   => 'Chiffre d\'affaire en hausse',
-            'id'      => 3, 
-            'author' => 'M@teo21',
-            'content' => '+500% sur 1 an, fabuleux. Blabla…',
-            'date'    => new \Datetime())
-        );
-        
-        return $this->render('BlogBundle:Blog:index.html.twig', array('articles' => $articles ));
+        // $articles = array(
+        //   array(
+        //     'title'   => 'Mon weekend a Phi Phi Island !',
+        //     'id'      => 1,
+        //     'author'  => 'winzou',
+        //     'content' => 'Ce weekend était trop bien. Blabla…',
+        //     'date'    => new \Datetime()),
+        //   array(
+        //     'title'   => 'Repetition du National Day de Singapour',
+        //     'id'      => 2,
+        //     'author' => 'winzou',
+        //     'content' => 'Bientôt prêt pour le jour J. Blabla…',
+        //     'date'    => new \Datetime()),
+        //   array(
+        //     'title'   => 'Chiffre d\'affaire en hausse',
+        //     'id'      => 3, 
+        //     'author' => 'M@teo21',
+        //     'content' => '+500% sur 1 an, fabuleux. Blabla…',
+        //     'date'    => new \Datetime())
+        // );
+
+        // antispam service
+        $antispam = $this->container->get('NX_blog.antispam');
+
+        // test data
+        $text = "aaa@aaapris.com, nie@163.com, xin@aaaparis.com";
+
+        if ($antispam->isSpam($text)) {
+            throw new \Exception('The message is recognized as a spam');
+        }
+
+
+        // return $this->render('BlogBundle:Blog:index.html.twig', array('articles' => $articles ));
     }
     
     public function quitAction() {
@@ -49,7 +51,7 @@ class BlogController extends Controller
     public function readAction($id) {
 //        $response = new Response;
 //        
-//        $response->setContent('404 页面未找到');
+//        $response->setContent('404 no page found');
 //        
 //        $response->setStatusCode(404);
 //        
