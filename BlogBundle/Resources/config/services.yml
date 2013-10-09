@@ -8,3 +8,4 @@ services:
 #        
     NX_blog.antispam:
         class: NX\BlogBundle\Antispam\Antispam
+        arguments: [@mailer, %local%, 3]

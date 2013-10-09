@@ -2,13 +2,23 @@
 namespace NX\BlogBundle\Antispam;
 
 class Antispam {
+	protected $mailer;
+	protected $local;
+	protected $nbForSpam;
+
+	public function __construct(\Swife_Mailer $mailer, $local, $nbForSpam) {
+		$this->mailer = $mailer;
+		$this->local = $local;
+		$this->nbForSpam = (int) $nbForSpam;
+	}
+
 	/**
 	 * [isSpam description]
 	 * @param  string  $text t
 	 * @return boolean     
 	 */
 	public function isSpam($text) {
-		return ($this->countLinks($text) + $this->countMails($text)) >= 3;
+		return ($this->countLinks($text) + $this->countMails($text)) >= $this->nbForSpam;
 	}
 
 	private function countLinks($text) {
