@@ -1,6 +1,7 @@
 <?php
 
 namespace NX\BlogBundle\Controller;
+namespace NX\BlogBundle\Entity;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -160,5 +161,13 @@ class BlogController extends Controller
         return $this->render('BlogBundle:Blog:menu.html.twig', array('list_articles' => $list));
     }
     
-    
+    public function testAction() {
+        $article = new Article;
+        $article->setDate(new \Datetime());
+        $article->setTitle('ORM test');
+        $article->setAuthor('NIE Xin');
+        $article->setContent("What are you looking at? I am just a test action!");
+
+        return $this->render('BlogBundle:Article:test.html.twig', array('article' => $article));
+    }
 }

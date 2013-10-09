@@ -42,3 +42,6 @@ blog_delete:
     requirements:
           id:   \d+
     
+blog_test:
+    path:       /test 
+    defaults:   { _controller: BlogBundle:Blog:test }
